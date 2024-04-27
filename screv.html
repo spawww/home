@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<title>Screv</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" href="favicon.ico?v=0">
+<style>
+.titolo {
+  font-size : 1.5rem;
+}
+
+hr {
+   margin-left: 2rem;
+   margin-right: 2rem;
+}
+
+img {
+  height : 1.5rem;
+}
+
+html, body, form, div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+textarea {
+  vertical-align:top;
+  margin: 0.2rem;
+  padding: 0.2rem;
+  border: 0;
+  width: 97%;
+  height: 90%;
+}
+</style>
+
+</head>
+<body>
+
+<script>
+
+function aggiornaTesto()
+{
+  fetch('https://cmem.onrender.com/')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(userData => {
+    // Process the retrieved user data
+    document.getElementById('testo').value = userData.screv;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+function inviaTesto()
+{
+
+const formData = {
+  testo: document.getElementById('testo').value,
+};
+
+// Make a POST request using the Fetch API
+fetch('https://cmem.onrender.com/', {
+  method: 'POST',
+  body: JSON.stringify(formData),
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(newUserData => {
+    // Process the newly created user data
+    console.log('New User Data:', newUserData);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+</script>
+
+<form action="https://cmem.onrender.com/" method="POST">
+  <button type="button" onclick="inviaTesto()"> <img src="cloudUpload.svg" alt="Upload"> </button>
+  <span class="finepagina">SCREV</span>
+  <button type="button" onclick="aggiornaTesto()"> <img src="cloudDownload.svg" alt="Download"> </button>
+  <div>
+    <textarea autofocus name="testo" id="testo"></textarea>
+  </div>
+</form>
+
+</body>
+</html>
