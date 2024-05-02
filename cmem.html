@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<title>Screv</title>
+<title>CMEM</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="icon" href="favicon.ico?v=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
 <style>
 .titolo {
-  font-size : 1.5rem;
+  padding : 1rem;
 }
 
-hr {
-   margin-left: 2rem;
+.finepagina {
    margin-right: 2rem;
 }
 
@@ -93,9 +92,11 @@ fetch(indirizzo, {
 
 </script>
 
-  <button type="button" onclick="inviaTesto()"> <img src="cloudUpload.svg" alt="Upload"> </button>
-  <span class="finepagina">SCREV</span>
-  <button type="button" onclick="aggiornaTesto()"> <img src="cloudDownload.svg" alt="Download"> </button>
+  <span class="titolo">
+  <span class="finepagina">CMEM</span>
+  <button  class="titolo" type="button" onclick="inviaTesto()"> <img src="cloudUpload.png" alt="Upload"> </button>
+  <button class="titolo"  type="button" onclick="aggiornaTesto()"> <img src="cloudDownload.png" alt="Download"> </button>
+  </span>
   <div>
     <textarea autofocus name="testo" id="testo"></textarea>
   </div>
