@@ -58,6 +58,7 @@ function aggiornaTesto()
   .then(userData => {
     // Process the retrieved user data
     document.getElementById('testo').value = userData.testo;
+    document.getElementById('testo').focus();
   })
   .catch(error => {
     console.error('Error:', error);
@@ -84,6 +85,7 @@ fetch(indirizzo, {
   })
   .then(newUserData => {
     // Process the newly created user data
+    document.getElementById('testo').focus();
     console.log('New User Data:', newUserData);
   })
   .catch(error => {
